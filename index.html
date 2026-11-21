@@ -19,11 +19,25 @@
         <div class="product-list">
           <article class="product-card" data-testid="product-keyboard">
             <div><h3>Mechanical Keyboard</h3><p>$80.00</p></div>
-            <button type="button" data-testid="add-keyboard" aria-label="Add Mechanical Keyboard">Add to cart</button>
+            <div class="product-actions" data-product="keyboard">
+              <button type="button" data-testid="add-keyboard" data-action="add" aria-label="Add Mechanical Keyboard">Add to cart</button>
+              <div class="product-quantity" hidden>
+                <button type="button" data-action="decrement" aria-label="Remove one Mechanical Keyboard">−</button>
+                <span data-testid="product-quantity-keyboard" aria-live="polite">1</span>
+                <button type="button" data-action="increment" aria-label="Add another Mechanical Keyboard">+</button>
+              </div>
+            </div>
           </article>
           <article class="product-card" data-testid="product-hub">
             <div><h3>USB-C Hub</h3><p>$35.00</p></div>
-            <button type="button" data-testid="add-hub" aria-label="Add USB-C Hub">Add to cart</button>
+            <div class="product-actions" data-product="hub">
+              <button type="button" data-testid="add-hub" data-action="add" aria-label="Add USB-C Hub">Add to cart</button>
+              <div class="product-quantity" hidden>
+                <button type="button" data-action="decrement" aria-label="Remove one USB-C Hub">−</button>
+                <span data-testid="product-quantity-hub" aria-live="polite">1</span>
+                <button type="button" data-action="increment" aria-label="Add another USB-C Hub">+</button>
+              </div>
+            </div>
           </article>
         </div>
 

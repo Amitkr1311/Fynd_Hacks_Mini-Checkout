@@ -26,6 +26,12 @@ input { border: 1px solid #bac3d2; border-radius: 7px; padding: 10px 12px; font:
 button { border: 0; border-radius: 7px; padding: 10px 12px; background: #3d63dd; color: white; font: inherit; font-weight: 700; cursor: pointer; }
 button:hover { background: #3155ca; }
 button:disabled { background: #aab2c2; cursor: not-allowed; }
+.product-actions { min-width: 118px; display: flex; justify-content: flex-end; }
+.product-quantity { display: flex; align-items: center; justify-content: space-between; width: 118px; height: 40px; padding: 3px; background: #edf1fa; border-radius: 8px; }
+.product-quantity[hidden] { display: none; }
+.product-quantity button { width: 34px; height: 34px; padding: 0; background: #3d63dd; font-size: 20px; line-height: 1; }
+.product-quantity button:hover { background: #3155ca; }
+.product-quantity span { min-width: 40px; text-align: center; color: #172033; font-weight: 800; }
 .quantity-controls button { background: #edf1fa; color: #172033; }
 .quantity-controls button:hover { background: #dde5f7; }
 .error { color: #b42318; background: #fff1f0; border: 1px solid #ffd2ce; border-radius: 7px; padding: 10px; margin: 0; }

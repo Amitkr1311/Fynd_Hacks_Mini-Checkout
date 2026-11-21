@@ -37,6 +37,23 @@ function setQuantity(productId, quantity) {
     cart[productId] = safeQuantity;
   }
   renderCart();
+  renderProductControls();
+}
+
+function renderProductControls() {
+  document.querySelectorAll('.product-actions').forEach((actions) => {
+    const productId = actions.dataset.product;
+    const quantity = cart[productId] || 0;
+    const addButton = actions.querySelector('[data-action="add"]');
+    const quantityControls = actions.querySelector('.product-quantity');
+
+    addButton.hidden = quantity > 0;
+    quantityControls.hidden = quantity === 0;
+
+    if (quantity > 0) {
+      quantityControls.querySelector('span').textContent = String(quantity);
+    }
+  });
 }
 
 function renderCart() {
@@ -80,12 +97,19 @@ function generateOrderReference() {
   return `ORD-${random}`;
 }
 
-document.querySelector('[data-testid="add-keyboard"]').addEventListener('click', () => {
-  setQuantity('keyboard', (cart.keyboard || 0) + 1);
-});
+document.querySelector('.product-list').addEventListener('click', (event) => {
+  const button = event.target.closest('button[data-action]');
+  if (!button) return;
 
-document.querySelector('[data-testid="add-hub"]').addEventListener('click', () => {
-  setQuantity('hub', (cart.hub || 0) + 1);
+  const actions = button.closest('.product-actions');
+  const productId = actions.dataset.product;
+  const action = button.dataset.action;
+
+  if (action === 'add' || action === 'increment') {
+    setQuantity(productId, (cart[productId] || 0) + 1);
+  } else if (action === 'decrement') {
+    setQuantity(productId, (cart[productId] || 0) - 1);
+  }
 });
 
 cartElement.addEventListener('click', (event) => {
@@ -144,6 +168,8 @@ startNewOrderButton.addEventListener('click', () => {
   startNewOrderButton.hidden = true;
   clearError();
   renderCart();
+  renderProductControls();
 });
 
 renderCart();
+renderProductControls();
