@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Checkout</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="checkout-shell">
+    <header>
+      <p class="eyebrow">Browser test demo</p>
+      <h1>Mini Checkout</h1>
+    </header>
+
+    <div class="checkout-grid">
+      <section aria-labelledby="products-heading">
+        <h2 id="products-heading">Products</h2>
+        <div class="product-list">
+          <article class="product-card" data-testid="product-keyboard">
+            <div><h3>Mechanical Keyboard</h3><p>$80.00</p></div>
+            <button type="button" data-testid="add-keyboard" aria-label="Add Mechanical Keyboard">Add to cart</button>
+          </article>
+          <article class="product-card" data-testid="product-hub">
+            <div><h3>USB-C Hub</h3><p>$35.00</p></div>
+            <button type="button" data-testid="add-hub" aria-label="Add USB-C Hub">Add to cart</button>
+          </article>
+        </div>
+
+        <h2 class="cart-heading">Your cart</h2>
+        <div id="cart" data-testid="cart" aria-live="polite"></div>
+      </section>
+
+      <aside class="order-panel" aria-labelledby="order-heading">
+        <h2 id="order-heading">Order details</h2>
+        <form id="checkout-form" novalidate>
+          <label for="customer-name">Customer Name</label>
+          <input id="customer-name" name="customerName" required autocomplete="name" data-testid="customer-name">
+
+          <p id="form-error" class="error" role="alert" aria-live="assertive" data-testid="form-error" hidden></p>
+
+          <div class="total-row">
+            <span>Order total</span>
+            <strong id="order-total" data-testid="order-total">$0.00</strong>
+          </div>
+
+          <button id="place-order" type="submit" data-testid="place-order">Place Order</button>
+        </form>
+
+        <section id="confirmation" class="confirmation" role="status" aria-live="polite" data-testid="confirmation" hidden></section>
+        <button id="start-new-order" type="button" class="secondary" data-testid="start-new-order" hidden>Start New Order</button>
+      </aside>
+    </div>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
